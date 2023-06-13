@@ -1,0 +1,40 @@
+<div class="search">
+    <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" [(ngModel)]="city"  placeholder="Search city" name="city">
+    </form>
+</div>
+<div class="container" *ngIf="newData">
+        <div class="upper">
+            <img src="https://cdn.pixabay.com/photo/2016/11/21/03/56/landscape-1844230_1280.png" *ngIf="newData.main.temp>15" alt="loading">
+            <img src="https://cdn.pixabay.com/photo/2016/11/21/03/56/landscape-1844231_1280.png" *ngIf="newData.main.temp<=15" alt="loading">
+            <div class="data">
+                <div class="location">{{newData.name}}</div>
+                <div class="temp"> {{newData.main.temp| number:'1.0-0'}}°C</div>
+            </div>
+        </div>
+        <div class="lower">
+            <div class="weath">weather</div>
+            <div class="info">
+                <div class="info-data">
+                    <img src="https://cdn.pixabay.com/photo/2013/07/12/16/36/thermometer-151236_1280.png" alt="loading">
+                    <p>min</p>
+                   <div>{{newData.main.temp_min | number: '1.0-0'}}°C</div>
+                </div>
+                <div class="info-data">
+                    <img src="https://cdn.pixabay.com/photo/2013/07/13/12/12/hot-159386_1280.png" alt="loading">
+                    <p>max</p>
+                    <div> {{newData.main.temp_max| number: '1.0-0'}}°C</div>
+                </div>
+                <div class="info-data">
+                    <img src="https://cdn.pixabay.com/photo/2016/03/18/14/51/thunderstorm-1265161_1280.png" alt="loading">
+                    <p>storm</p>
+                    <div>{{newData.main.humidity}}%</div>
+                </div>
+                <div class="info-data">
+                    <img src="https://cdn.pixabay.com/photo/2013/07/12/15/20/wind-149701_1280.png" alt="loading">
+                    <p>wind</p>
+                    <div>{{newData.wind.speed}} km/h</div>
+                </div>
+            </div>
+        </div>
+    </div>
